@@ -126,21 +126,29 @@ public class LibrarySystem {
             }
 
             switch (choice) {
-                case 1 -> viewAllBooks();
-                case 2 -> borrowBook(scanner);
-                case 3 -> returnBook(scanner);
-                case 4 -> {
-                    if (loggedInUser.getRole().equalsIgnoreCase("admin")) {
-                        viewTransactions();
-                    } else {
-                        return;
-                    }
-                }
-                case 5 -> {
-                    return;
-                }
-                default -> System.out.println("Invalid choice.");
-            }
+    case 1:
+        viewAllBooks();
+        break;
+    case 2:
+        borrowBook(scanner);
+        break;
+    case 3:
+        returnBook(scanner);
+        break;
+    case 4:
+        if (loggedInUser.getRole().equalsIgnoreCase("admin")) {
+            viewTransactions();
+        } else {
+            return;
+        }
+        break;
+    case 5:
+        return;
+    default:
+        System.out.println("Invalid choice.");
+        break;
+}
+
         }
     }
 
