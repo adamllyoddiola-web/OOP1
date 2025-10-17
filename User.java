@@ -11,9 +11,31 @@ public class User extends Person {
         this.role = role;
     }
 
-    public String getPassword() { return password; }
-    public String getRole() { return role; }
-    public ArrayList<String> getBorrowedBooks() { return borrowedBooks; }
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public ArrayList<String> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void borrowBook(String bookId) {
+        if (!borrowedBooks.contains(bookId) && borrowedBooks.size() < 3) {
+            borrowedBooks.add(bookId);
+        }
+    }
+
+    public void returnBook(String bookId) {
+        borrowedBooks.remove(bookId);
+    }
+
+    public boolean canBorrowMore() {
+        return borrowedBooks.size() < 3;
+    }
 
     @Override
     public void displayInfo() {
