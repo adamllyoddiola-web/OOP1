@@ -13,6 +13,9 @@ public class LibrarySystem {
         loadUsers();
         loadBooks();
         loadTransactions();
+        loggedInUser.borrowBook(bookId);
+        loggedInUser.returnBook(bookId);
+
 
         login();
 
@@ -25,6 +28,21 @@ public class LibrarySystem {
 
         System.out.println("Exiting... All data saved.");
     }
+
+    public void borrowBook(String bookId) {
+    if (!borrowedBooks.contains(bookId) && borrowedBooks.size() < 3) {
+        borrowedBooks.add(bookId);
+    }
+}
+
+public void returnBook(String bookId) {
+    borrowedBooks.remove(bookId);
+}
+
+public boolean canBorrowMore() {
+    return borrowedBooks.size() < 3;
+}
+
 
     // Load users from users.txt
     private static void loadUsers() {
